@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Plugin.Toasts.UWP;
 
 namespace VisualWheel.UWP
 {
@@ -22,6 +23,9 @@ namespace VisualWheel.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            Xamarin.Forms.DependencyService.Register<ToastNotification>();
+            ToastNotification.Init();
 
             LoadApplication(new VisualWheel.App(new UwpInitializer()));
         }

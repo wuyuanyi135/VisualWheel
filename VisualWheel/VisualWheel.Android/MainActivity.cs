@@ -1,8 +1,10 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Plugin.Toasts;
 using Prism;
 using Prism.Ioc;
+using Prism.Services;
 
 namespace VisualWheel.Droid
 {
@@ -17,7 +19,13 @@ namespace VisualWheel.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            Xamarin.Forms.DependencyService.Register<ToastNotification>();
+            ToastNotification.Init(this);
+
             LoadApplication(new App(new AndroidInitializer()));
+
+ 
         }
     }
 
@@ -26,6 +34,7 @@ namespace VisualWheel.Droid
         public void RegisterTypes(IContainerRegistry container)
         {
             // Register any platform specific implementations
+            
         }
     }
 }
